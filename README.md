@@ -149,11 +149,11 @@ We tested AutoLab on the [Telco Customer Churn dataset](https://www.kaggle.com/d
 
 | Experiment | Strategy | ROC-AUC | F1-Macro | Result |
 | :--- | :--- | :--- | :--- | :--- |
-| **exp_auto_0003** | **Balanced Logistic Regression** | **0.8416** | 0.6136 | **Current Champion** |
+| **exp_auto_0003** | **Balanced Logistic Regression** | **0.8416** | 0.6136 | **Best** |
 | **exp_auto_0005** | Tuned Random Forest | 0.8405 | 0.6288 | High Precision |
 | **exp_auto_0006** | RF w/ Feature Engineering | 0.8395 | 0.6187 | Stable |
 
-**Key Insight**: The agent autonomously discovered that handling class imbalance via `class_weight='balanced'` was more effective for ROC-AUC than simply increasing model complexity.
+**Key Insight**: The agent autonomously discovered that handling class imbalance via `class_weight='balanced'` was more effective for ROC-AUC than simply increasing model complexity. Also due to compute and using free-tier models the rate limit were hit frequently due to which the agent performed mid level experiments but that can be improved using a paid tier good reasoning model and increasing the number of iterations/experiments which will help it to write more complex and deep analysis/modlling snippets to improve performance.
 
 ---
 
