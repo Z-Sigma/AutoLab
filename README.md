@@ -147,7 +147,7 @@ python main.py --mode legacy --readme data/README.md --dataset data --budget 5 -
 
 We tested AutoLab on the [Telco Customer Churn dataset](https://www.kaggle.com/datasets/blastchar/telco-customer-churn) to validate its autonomous reasoning. Using **ROC-AUC** as the primary metric, the agent achieved the following results in a single automated session:
 
-| Experiment | Strategy | ROC-AUC | F1-Macro | Result |
+| Experiment | Strategy | ROC-AUC | F1-Score | Result |
 | :--- | :--- | :--- | :--- | :--- |
 | **exp_auto_0003** | **Balanced Logistic Regression** | **0.8416** | 0.6136 | **Best** |
 | **exp_auto_0005** | Tuned Random Forest | 0.8405 | 0.6288 | High Precision |
