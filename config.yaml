@@ -1,0 +1,56 @@
+# Autoresearcher runtime defaults (override via CLI)
+max_experiments: 30
+# Autonomous mode: LLM tool-calling rounds (each round may invoke multiple tools)
+max_agent_turns: 25
+analysis_timeout_seconds: 300
+max_time_per_experiment_seconds: 7200
+max_debug_retries: 3
+# Max seconds a single debug LLM call may take before timing out and releasing the lock.
+# Prevents threads 2/3/4 from hanging indefinitely if thread 1's debug call stalls.
+debug_llm_timeout_seconds: 30
+max_total_wall_time_hours: 4
+convergence_window: 8
+max_research_sources: 20
+reflection_every_n: 5
+docker_memory_limit: "16g"
+docker_cpu_limit: 8
+use_docker_sandbox: false
+target_metric_threshold: null  # e.g. 0.95 — stop if primary metric reaches this
+
+# Optional: Limits agent memory to the last N turns to aggressively save API tokens. null lets context grow infinitely.
+max_history_turns: 5
+
+# ── Parallel Experiments ───────────────────────────────────────────────────
+# Run up to 4 training scripts concurrently (3-4x faster wall-clock time).
+# WARNING: disable on free API tiers — parallel debug retries can spike RPM.
+#   true  → concurrent subprocesses (debug LLM calls are serialized automatically)
+#   false → sequential one-at-a-time (safest for free tiers)
+parallel_experiments: false
+
+# ── API Rate Limiting ──────────────────────────────────────────────────────────
+# Set your provider tier. The system will automatically apply sensible defaults.
+#
+#   "free"  → Groq on_demand: enforces ~90K tokens/day budget (hard cap = 100K TPD)
+#   "paid"  → Groq developer plan: enforces ~250K tokens/min (hard cap = 300K TPM)
+#   "none"  → Disables all rate limiting (use if self-hosted / OpenAI / Anthropic)
+#
+api_tier: "none"
+
+# Optional overrides — leave null to use tier defaults above.
+tokens_per_day_limit: null    # e.g. 90000  (only used when api_tier = "free")
+tokens_per_minute_limit: null # e.g. 250000 (only used when api_tier = "paid")
+
+# Optional: Override maximum characters allowed in LLM inputs for various tools 
+truncation_bounds:
+  python_stdout: 4000      # Default: 10000
+  python_stderr: 2000      # Default: 6000
+  read_file: 3000          # Default: 8000
+  read_readme: 6000        # Default: 16000
+  experiment_script: 6000  # Default: 16000
+
+
+# LLM (orchestrator / metric reasoner / debug) — set ANTHROPIC_API_KEY or OPENAI_API_KEY in environment
+model: "gemini-2.5-flash-lite"
+
+# Research
+tavily_api_key_env: "TAVILY_API_KEY"

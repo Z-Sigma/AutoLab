@@ -1,0 +1,18 @@
+{
+  "experiment_id": "exp_0001",
+  "strategy_id": "strat_img_1",
+  "model_class": "sklearn_rf",
+  "pretrained": false,
+  "optimizer": "n/a",
+  "lr": 0.0001,
+  "batch_size": 32,
+  "epochs": 1,
+  "scheduler": null,
+  "loss_fn": "default",
+  "augmentations": [],
+  "extra_kwargs": {
+    "n_estimators": 300
+  },
+  "custom_model_code": null,
+  "custom_metric_defs": []
+}

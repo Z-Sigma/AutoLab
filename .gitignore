@@ -1,0 +1,38 @@
+# Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Data and State
+state/
+experiments/exp_auto_*/
+daily_token_usage.json
+report/
+
+# IDEs
+.vscode/
+.idea/
+
+# Environment
+.env
+.gemini/

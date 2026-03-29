@@ -1,0 +1,16 @@
+{
+  "experiment_id": "exp_0003",
+  "strategy_id": "strat_tab_3",
+  "model_class": "sklearn_logreg",
+  "pretrained": false,
+  "optimizer": "n/a",
+  "lr": 0.001,
+  "batch_size": 32,
+  "epochs": 1,
+  "scheduler": null,
+  "loss_fn": "default",
+  "augmentations": [],
+  "extra_kwargs": {},
+  "custom_model_code": null,
+  "custom_metric_defs": []
+}
