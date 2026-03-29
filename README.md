@@ -1,6 +1,6 @@
 # Autoresearcher
 
-Autoresearcher is a fully autonomous, Query Planner-driven Machine Learning experimentation system. Given a task description (`data/README.md`) and a raw dataset, it operates like a senior data scientist: querying dataset metadata, autonomously forming hypotheses, writing full feature-engineering and model-training scripts, debugging failures, and iterating to find the best-performing pipeline — all without human intervention.
+Autoresearcher is a fully autonomous, Query Planner-driven Machine Learning experimentation system. Given a task description (`data/README.md`) and a raw dataset, it operates like a data scientist: querying dataset metadata, autonomously forming hypotheses, writing full feature-engineering and model-training scripts, debugging failures, and iterating to find the best-performing pipeline — all without human intervention.
 
 ---
 
