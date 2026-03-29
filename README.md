@@ -143,6 +143,40 @@ python main.py --mode legacy --readme data/README.md --dataset data --budget 5 -
 
 ---
 
+## 📊 Case Study: Telco Customer Churn
+
+We tested AutoLab on the [Telco Customer Churn dataset](https://www.kaggle.com/datasets/blastchar/telco-customer-churn) to validate its autonomous reasoning. Using **ROC-AUC** as the primary metric, the agent achieved the following results in a single automated session:
+
+| Experiment | Strategy | ROC-AUC | F1-Macro | Result |
+| :--- | :--- | :--- | :--- | :--- |
+| **exp_auto_0003** | **Balanced Logistic Regression** | **0.8416** | 0.6136 | **Current Champion** |
+| **exp_auto_0005** | Tuned Random Forest | 0.8405 | 0.6288 | High Precision |
+| **exp_auto_0006** | RF w/ Feature Engineering | 0.8395 | 0.6187 | Stable |
+
+**Key Insight**: The agent autonomously discovered that handling class imbalance via `class_weight='balanced'` was more effective for ROC-AUC than simply increasing model complexity.
+
+---
+
+## ⚠️ Rate Limits & Compute Reality
+
+The choice of API tier and compute environment significantly impacts your experience:
+
+-   **Free Tiers (e.g., Groq / GitHub Models)**: You will frequently hit **429 Rate Limit** errors (TPD/TPM). AutoLab has built-in exponential backoff to handle these, but a full research session may take longer to complete.
+-   **Paid Tiers (OpenAI / Anthropic)**: Highly recommended for production use. The agent runs significantly faster and can perform more complex parallel debugging without being throttled.
+-   **Local Models / High Compute**: If running models locally (via Ollama or vLLM), ensure you have sufficient VRAM. For Deep Learning tasks (NLP/CV), the agent can utilize local GPUs if they are available in the execution environment.
+
+---
+
+## 🎯 The Three Pillars of Performance
+
+The quality of AutoLab's research is governed by three critical factors:
+
+1.  **The Task README (`data/README.md`)**: This is the agent's "Prime Directive." The more context, constraints, and specific goals you provide here, the more focused the agent becomes.
+2.  **The System Prompt**: The internal instructions (`prompts/autonomous_system.txt`) define *how* the agent thinks. Refining this allows for different "research styles."
+3.  **The Model Choice**: The "IQ" of the agent. While smaller models can handle basic tabular tasks, frontier models (like Gemini 1.5 Pro or Claude 3.5 Sonnet) are required for complex feature engineering, literature-based hypothesis forming, and advanced debugging.
+
+---
+
 ## 📝 Writing Your Task README (`data/README.md`)
 
 The `data/README.md` file is your **direct instruction layer** to the agent. It is embedded into the agent's context at session start and governs all its decisions.
